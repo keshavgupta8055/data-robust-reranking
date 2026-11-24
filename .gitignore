@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+sc_*.pkl
+judge_lora_*/
+.ipynb_checkpoints/

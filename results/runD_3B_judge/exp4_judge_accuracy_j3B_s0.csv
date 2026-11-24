@@ -1,0 +1,5 @@
+reranker,judge,accuracy,n
+qwen3-0.6B,zs,59.5,2463
+qwen3-0.6B,ft,67.6,2463
+bge-v2-m3,zs,59.5,2467
+bge-v2-m3,ft,68.0,2467

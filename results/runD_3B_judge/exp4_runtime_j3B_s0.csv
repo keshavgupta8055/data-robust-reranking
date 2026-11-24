@@ -1,0 +1,6 @@
+stage,seconds
+rerank_scoring,4099.0
+judge_training,1793.1
+judge_pairs_K3,3331.5
+grid_search,136.0
+judge_diagnostics,833.4

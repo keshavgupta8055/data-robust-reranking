@@ -1,0 +1,231 @@
+RUN TAG: j3B_s0
+Tesla T4, 15360 MiB
+Tesla T4, 15360 MiB
+
+internet: OK
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Generating train split: 0 examples [00:00, ? examples/s]
+Generating train split: 111972 examples [00:00, 432359.64 examples/s]
+Generating train split: 111972 examples [00:00, 426671.53 examples/s]
+DatasetDict({
+    train: Dataset({
+        features: ['question', 'answer', 'last_modified_time', 'evidence', 'outdated_infos', 'document'],
+        num_rows: 111972
+    })
+})
+columns: ['question', 'answer', 'last_modified_time', 'evidence', 'outdated_infos', 'document']
+usable QAs: 111972 | judge-train: 67055 | dev: 22487 | test: 22430
+instances: 2400 (dev 1200 / test 1200), pool size 8
+example query: What percentage of the population in Sanghar District practices Hinduism, including those from Scheduled Castes? | Timestamp: 2024-12-01
+--- clean: [('dis', '2024-09-01'), ('pos', '2024-09-01'), ('dis', '2024-09-01'), ('dis', '2024-09-01')]
+--- swapped: [('dis', '2024-09-01'), ('pos', '2024-08-01'), ('dis', '2024-09-01'), ('dis', '2024-09-01')]
+--- crawl: [('dis', '2024-09-01'), ('pos', '2024-09-01'), ('dis', '2024-09-01'), ('dis', '2024-09-01')]
+--- resave: [('dis', '2024-09-01'), ('pos', '2024-09-01'), ('dis', '2024-12-01'), ('dis', '2024-09-01')]
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/310 [00:00<02:24,  2.15it/s]
+Loading weights:  79%|███████▉  | 246/310 [00:00<00:00, 566.48it/s]
+Loading weights: 100%|██████████| 310/310 [00:00<00:00, 472.06it/s]
+clean    qwen3-0.6B  490s
+missing  qwen3-0.6B  955s
+swapped  qwen3-0.6B  1449s
+random0  qwen3-0.6B  1942s
+random1  qwen3-0.6B  2436s
+noise30  qwen3-0.6B  2930s
+noise180 qwen3-0.6B  3424s
+
+Loading weights:   0%|          | 0/393 [00:00<?, ?it/s]
+Loading weights:   2%|▏         | 9/393 [00:00<00:20, 18.69it/s]
+Loading weights: 100%|██████████| 393/393 [00:00<00:00, 788.03it/s]
+clean    bge-v2-m3   93s
+missing  bge-v2-m3   178s
+swapped  bge-v2-m3   270s
+random0  bge-v2-m3   361s
+random1  bge-v2-m3   453s
+noise30  bge-v2-m3   544s
+noise180 bge-v2-m3   636s
+[stage rerank_scoring: 4099s]
+qwen3-0.6B | pos in date-free top-3: 0.995
+bge-v2-m3 | pos in date-free top-3: 0.996
+
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]
+Fetching 2 files:  50%|█████     | 1/2 [00:34<00:34, 34.88s/it]
+Fetching 2 files: 100%|██████████| 2/2 [00:34<00:00, 17.44s/it]
+
+Loading weights:   0%|          | 0/434 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/434 [00:00<05:29,  1.32it/s]
+Loading weights:  23%|██▎       | 99/434 [00:00<00:02, 153.49it/s]
+Loading weights:  35%|███▌      | 152/434 [00:01<00:01, 154.93it/s]
+Loading weights:  43%|████▎     | 188/434 [00:01<00:01, 150.04it/s]
+Loading weights:  50%|████▉     | 215/434 [00:01<00:01, 151.66it/s]
+Loading weights:  55%|█████▍    | 238/434 [00:01<00:01, 152.83it/s]
+Loading weights:  60%|█████▉    | 259/434 [00:01<00:01, 146.59it/s]
+Loading weights:  64%|██████▍   | 279/434 [00:02<00:01, 148.19it/s]
+Loading weights:  68%|██████▊   | 297/434 [00:02<00:00, 151.21it/s]
+Loading weights:  73%|███████▎  | 315/434 [00:02<00:00, 155.43it/s]
+Loading weights:  76%|███████▋  | 332/434 [00:02<00:00, 149.91it/s]
+Loading weights:  81%|████████  | 351/434 [00:02<00:00, 147.12it/s]
+Loading weights:  85%|████████▍ | 367/434 [00:02<00:00, 148.69it/s]
+Loading weights:  89%|████████▉ | 387/434 [00:02<00:00, 144.56it/s]
+Loading weights:  93%|█████████▎| 402/434 [00:02<00:00, 140.69it/s]
+Loading weights:  97%|█████████▋| 423/434 [00:03<00:00, 152.65it/s]
+Loading weights: 100%|██████████| 434/434 [00:03<00:00, 142.68it/s]
+Training the judge from scratch (about 15 min for 1.5B, 30 min for 3B).
+/kaggle/working/v4.py:307: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  scaler.unscale_(opt); torch.nn.utils.clip_grad_norm_(judge.parameters(), 1.0); scaler.step(opt); scaler.update(); opt.zero_grad(set_to_none=True); sched.step(); step += 1
+update 50/375 loss 0.212 (241s)
+update 100/375 loss 0.220 (481s)
+update 150/375 loss 0.347 (721s)
+update 200/375 loss 0.695 (957s)
+update 250/375 loss 0.089 (1197s)
+update 300/375 loss 0.804 (1435s)
+update 350/375 loss 0.350 (1674s)
+[stage judge_training: 1793s]
+K=3 qwen3-0.6B new judged pairs: 7200
+K=3 bge-v2-m3 new judged pairs: 2231
+[stage judge_pairs_K3: 3332s]
+{'reranker': 'qwen3-0.6B', 'judge': 'zs', 'accuracy': 59.5, 'n': 2463}
+{'reranker': 'qwen3-0.6B', 'judge': 'ft', 'accuracy': 67.6, 'n': 2463}
+{'reranker': 'bge-v2-m3', 'judge': 'zs', 'accuracy': 59.5, 'n': 2467}
+{'reranker': 'bge-v2-m3', 'judge': 'ft', 'accuracy': 68.0, 'n': 2467}
+qwen3-0.6B configs: 191 68s
+bge-v2-m3 configs: 191 68s
+[stage grid_search: 136s]
+
+===== qwen3-0.6B: expected test P@1 (%), settings tuned separately for each scenario =====
+mix rho=0.0  | date_free 51.2 | date_aware 60.9 | decay 93.9 | metadata_only 94.9 | metadata_thresh 86.2 | content_zs 57.8 | content_ft 63.5 | gated_zs 94.0 | gated_ft 94.8 | nogate_zs 94.2 | nogate_ft 92.6
+mix rho=0.1  | date_free 51.2 | date_aware 59.6 | decay 88.2 | metadata_only 88.8 | metadata_thresh 81.3 | content_zs 57.8 | content_ft 63.5 | gated_zs 88.2 | gated_ft 88.9 | nogate_zs 88.5 | nogate_ft 87.2
+mix rho=0.2  | date_free 51.2 | date_aware 58.3 | decay 82.1 | metadata_only 82.7 | metadata_thresh 76.3 | content_zs 57.8 | content_ft 63.5 | gated_zs 82.4 | gated_ft 82.8 | nogate_zs 82.7 | nogate_ft 82.2
+mix rho=0.3  | date_free 51.2 | date_aware 57.0 | decay 76.1 | metadata_only 76.5 | metadata_thresh 71.2 | content_zs 57.7 | content_ft 63.5 | gated_zs 76.6 | gated_ft 78.2 | nogate_zs 76.9 | nogate_ft 77.4
+mix rho=0.4  | date_free 51.2 | date_aware 55.7 | decay 69.9 | metadata_only 70.4 | metadata_thresh 66.3 | content_zs 57.8 | content_ft 63.5 | gated_zs 70.8 | gated_ft 73.8 | nogate_zs 71.0 | nogate_ft 73.1
+mix rho=0.5  | date_free 51.2 | date_aware 54.4 | decay 63.9 | metadata_only 64.3 | metadata_thresh 61.3 | content_zs 57.8 | content_ft 63.5 | gated_zs 64.9 | gated_ft 69.4 | nogate_zs 65.7 | nogate_ft 69.3
+ALL swapped  | date_free 51.2 | date_aware 40.8 | decay 9.2 | metadata_only 0.7 | metadata_thresh 51.2 | content_zs 57.8 | content_ft 63.5 | gated_zs 52.9 | gated_ft 53.2 | nogate_zs 20.1 | nogate_ft 28.7
+ALL random   | date_free 51.2 | date_aware 51.8 | decay 49.0 | metadata_only 49.0 | metadata_thresh 51.2 | content_zs 57.8 | content_ft 63.5 | gated_zs 57.5 | gated_ft 62.3 | nogate_zs 54.1 | nogate_ft 60.3
+
+===== bge-v2-m3: expected test P@1 (%), settings tuned separately for each scenario =====
+mix rho=0.0  | date_free 55.0 | date_aware 69.4 | decay 93.4 | metadata_only 93.8 | metadata_thresh 84.2 | content_zs 58.1 | content_ft 63.5 | gated_zs 93.8 | gated_ft 93.7 | nogate_zs 93.9 | nogate_ft 92.6
+mix rho=0.1  | date_free 55.0 | date_aware 67.0 | decay 87.7 | metadata_only 88.0 | metadata_thresh 79.9 | content_zs 58.1 | content_ft 63.5 | gated_zs 88.0 | gated_ft 88.2 | nogate_zs 88.2 | nogate_ft 87.3
+mix rho=0.2  | date_free 55.0 | date_aware 64.7 | decay 81.3 | metadata_only 82.2 | metadata_thresh 75.6 | content_zs 58.1 | content_ft 63.5 | gated_zs 82.3 | gated_ft 83.0 | nogate_zs 82.5 | nogate_ft 82.1
+mix rho=0.3  | date_free 55.0 | date_aware 62.3 | decay 75.7 | metadata_only 76.4 | metadata_thresh 71.2 | content_zs 58.1 | content_ft 63.5 | gated_zs 76.7 | gated_ft 78.5 | nogate_zs 76.9 | nogate_ft 77.2
+mix rho=0.4  | date_free 55.0 | date_aware 59.9 | decay 70.1 | metadata_only 70.6 | metadata_thresh 66.9 | content_zs 58.1 | content_ft 63.5 | gated_zs 71.1 | gated_ft 73.9 | nogate_zs 71.2 | nogate_ft 73.4
+mix rho=0.5  | date_free 55.0 | date_aware 57.5 | decay 64.5 | metadata_only 64.8 | metadata_thresh 62.6 | content_zs 58.1 | content_ft 63.5 | gated_zs 65.9 | gated_ft 69.6 | nogate_zs 65.7 | nogate_ft 69.9
+ALL swapped  | date_free 55.0 | date_aware 30.2 | decay 20.8 | metadata_only 4.0 | metadata_thresh 55.0 | content_zs 58.1 | content_ft 63.5 | gated_zs 52.9 | gated_ft 53.7 | nogate_zs 22.5 | nogate_ft 31.0
+ALL random   | date_free 55.0 | date_aware 51.7 | decay 52.0 | metadata_only 51.2 | metadata_thresh 55.0 | content_zs 58.1 | content_ft 63.5 | gated_zs 59.0 | gated_ft 63.2 | nogate_zs 54.9 | nogate_ft 61.4
+
+===== qwen3-0.6B: ONE setting tuned at rho=0.3 =====
+CHOSEN: {'date_free': {}, 'date_aware': {}, 'decay': {'gamma': 0.7, 'sigma': 120}, 'metadata_only': {'alpha': 0.02}, 'metadata_thresh': {'alpha': 0.05, 'tau': 30}, 'content_zs': {'alpha': 0.02}, 'content_ft': {'alpha': 0.02}, 'gated_zs': {'alpha': 0.02, 'lam': 0, 'theta': 1}, 'gated_ft': {'alpha': 0.02, 'lam': 1, 'theta': 1.5}, 'nogate_zs': {'alpha': 0.02, 'lam': 0.5}, 'nogate_ft': {'alpha': 0.02, 'lam': 1}}
+             date_free  date_aware  decay  metadata_only  metadata_thresh  content_zs  content_ft  gated_zs  gated_ft  nogate_zs  nogate_ft
+scenario                                                                                                                                   
+clean             51.2        60.9   94.2           94.9             85.9        57.8        63.5      94.0      91.4       94.2       91.6
+mix rho=0.3       51.2        57.0   76.1           76.5             71.2        57.7        63.5      76.6      78.2       76.9       77.4
+mix rho=0.5       51.2        54.4   63.9           64.3             61.4        57.8        63.5      64.9      69.4       65.3       68.0
+ALL random        51.2        51.8   48.8           49.0             48.8        57.8        63.5      51.1      58.7       50.6       54.5
+ALL swapped       51.2        40.8    0.9            0.7             10.5        57.8        63.5       5.2      19.9        0.8       15.2
+AVERAGE: {'date_free': 51.2, 'date_aware': 53.0, 'decay': 56.8, 'metadata_only': 57.1, 'metadata_thresh': 55.6, 'content_zs': 57.8, 'content_ft': 63.5, 'gated_zs': 58.4, 'gated_ft': 63.5, 'nogate_zs': 57.6, 'nogate_ft': 61.3}
+WORST  : {'date_free': 51.2, 'date_aware': 40.8, 'decay': 0.9, 'metadata_only': 0.7, 'metadata_thresh': 10.5, 'content_zs': 57.7, 'content_ft': 63.5, 'gated_zs': 5.2, 'gated_ft': 19.9, 'nogate_zs': 0.8, 'nogate_ft': 15.2}
+
+===== bge-v2-m3: ONE setting tuned at rho=0.3 =====
+CHOSEN: {'date_free': {}, 'date_aware': {}, 'decay': {'gamma': 0.5, 'sigma': 120}, 'metadata_only': {'alpha': 0.05}, 'metadata_thresh': {'alpha': 0.1, 'tau': 30}, 'content_zs': {'alpha': 0.02}, 'content_ft': {'alpha': 0.02}, 'gated_zs': {'alpha': 0.1, 'lam': 0, 'theta': 1}, 'gated_ft': {'alpha': 0.05, 'lam': 0.5, 'theta': 1.5}, 'nogate_zs': {'alpha': 0.1, 'lam': 0.5}, 'nogate_ft': {'alpha': 0.02, 'lam': 1}}
+             date_free  date_aware  decay  metadata_only  metadata_thresh  content_zs  content_ft  gated_zs  gated_ft  nogate_zs  nogate_ft
+scenario                                                                                                                                   
+clean             55.0        69.4   92.5           93.8             84.2        58.1        63.5      93.3      92.2       93.9       90.8
+mix rho=0.3       55.0        62.3   75.7           76.4             71.2        58.1        63.5      76.7      78.5       76.9       77.2
+mix rho=0.5       55.0        57.5   64.5           64.8             62.6        58.1        63.5      65.6      69.3       65.5       68.2
+ALL random        55.0        51.7   50.4           50.4             50.0        58.1        63.5      52.0      57.7       51.3       56.4
+ALL swapped       55.0        30.2    4.0            2.1             17.7        58.1        63.5       6.4      18.6        1.6       16.8
+AVERAGE: {'date_free': 55.0, 'date_aware': 54.2, 'decay': 57.4, 'metadata_only': 57.5, 'metadata_thresh': 57.1, 'content_zs': 58.1, 'content_ft': 63.5, 'gated_zs': 58.8, 'gated_ft': 63.3, 'nogate_zs': 57.8, 'nogate_ft': 61.9}
+WORST  : {'date_free': 55.0, 'date_aware': 30.2, 'decay': 4.0, 'metadata_only': 2.1, 'metadata_thresh': 17.7, 'content_zs': 58.1, 'content_ft': 63.5, 'gated_zs': 6.4, 'gated_ft': 18.6, 'nogate_zs': 1.6, 'nogate_ft': 16.8}
+
+===== mild (same chosen settings) =====
+  reranker     scenario  date_free  date_aware  decay  metadata_only  metadata_thresh  content_zs  content_ft  gated_zs  gated_ft  nogate_zs  nogate_ft
+qwen3-0.6B  ALL noise30       51.2        56.8   70.3           71.2             70.8        57.8        63.5      72.4      76.4       74.0       76.3
+qwen3-0.6B ALL noise180       51.2        49.4   51.2           52.2             52.2        57.8        63.5      54.6      60.7       52.7       57.3
+ bge-v2-m3  ALL noise30       55.0        57.1   72.1           72.0             71.9        58.1        63.5      72.7      76.0       73.3       76.9
+ bge-v2-m3 ALL noise180       55.0        49.5   53.5           52.6             51.7        58.1        63.5      55.2      59.3       53.1       58.7
+/kaggle/working/v4.py:461: RuntimeWarning: Mean of empty slice
+  row = dict(reranker=rn, scenario=name, **{f: round(100 * np.nanmean(te[f]), 1) for f in FAMS})
+
+===== real (same chosen settings) =====
+  reranker         scenario  date_free  date_aware  decay  metadata_only  metadata_thresh  content_zs  content_ft  gated_zs  gated_ft  nogate_zs  nogate_ft
+qwen3-0.6B       ALL resave       51.2         NaN   61.5           61.7             59.4        57.8        63.5      62.7      69.3       63.2       66.1
+qwen3-0.6B        ALL batch       51.2         NaN   51.2           51.2             51.2        57.8        63.5      51.2      63.5       57.8       63.5
+qwen3-0.6B        ALL crawl       51.2         NaN   73.9           74.5             65.0        57.8        63.5      74.6      78.0       76.4       78.2
+qwen3-0.6B         ALL year       51.2         NaN   51.2           51.2             51.2        57.8        63.5      51.2      63.5       57.8       63.5
+qwen3-0.6B        ALL month       51.2         NaN   94.2           94.9             85.9        57.8        63.5      94.0      91.4       94.2       91.6
+qwen3-0.6B real mix rho=0.3       51.2         NaN   84.3           84.9             77.5        57.8        63.5      84.5      84.7       85.2       84.3
+qwen3-0.6B real mix rho=0.5       51.2         NaN   77.7           78.2             72.0        57.8        63.5      78.2      80.2       79.1       79.5
+ bge-v2-m3       ALL resave       55.0         NaN   62.2           62.2             60.8        58.1        63.5      63.5      68.2       64.0       66.4
+ bge-v2-m3        ALL batch       55.0         NaN   55.0           55.0             55.0        58.1        63.5      55.0      63.2       58.3       63.5
+ bge-v2-m3        ALL crawl       55.0         NaN   74.2           75.2             67.0        58.1        63.5      74.7      78.1       76.9       77.7
+ bge-v2-m3         ALL year       55.0         NaN   55.0           55.0             55.0        58.1        63.5      55.0      63.2       58.3       63.5
+ bge-v2-m3        ALL month       55.0         NaN   92.5           93.8             84.2        58.1        63.5      93.3      92.2       93.9       90.8
+ bge-v2-m3 real mix rho=0.3       55.0         NaN   83.5           84.4             76.9        58.1        63.5      84.4      85.0       85.1       83.8
+ bge-v2-m3 real mix rho=0.5       55.0         NaN   77.6           78.2             72.0        58.1        63.5      78.4      80.3       79.2       79.2
+
+===== mixsens (same chosen settings) =====
+  reranker              scenario  date_free  date_aware  decay  metadata_only  metadata_thresh  content_zs  content_ft  gated_zs  gated_ft  nogate_zs  nogate_ft
+qwen3-0.6B swapped-heavy rho=0.3       51.2        56.2   72.1           72.5             68.0        57.8        63.5      72.9      74.8       72.4       73.7
+qwen3-0.6B missing-heavy rho=0.3       51.2        57.8   79.6           80.1             74.1        57.8        63.5      79.8      81.3       81.0       80.9
+qwen3-0.6B  random-heavy rho=0.3       51.2        57.7   78.6           79.1             73.2        57.8        63.5      79.1      80.1       79.2       79.1
+qwen3-0.6B swapped-heavy rho=0.5       51.2        53.0   57.3           57.6             56.0        57.8        63.5      58.8      63.7       57.9       61.7
+qwen3-0.6B missing-heavy rho=0.5       51.2        55.6   69.9           70.2             66.2        57.8        63.5      70.3      74.6       72.1       73.8
+qwen3-0.6B  random-heavy rho=0.5       51.2        55.5   68.1           68.5             64.7        57.8        63.5      69.1      72.5       69.2       70.8
+ bge-v2-m3 swapped-heavy rho=0.3       55.0        60.3   71.7           72.2             68.3        58.1        63.5      72.8      74.9       72.4       73.5
+ bge-v2-m3 missing-heavy rho=0.3       55.0        64.1   79.3           80.1             73.9        58.1        63.5      80.1      81.6       80.9       80.5
+ bge-v2-m3  random-heavy rho=0.3       55.0        63.3   78.0           78.8             72.7        58.1        63.5      79.0      80.3       79.2       79.0
+ bge-v2-m3 swapped-heavy rho=0.5       55.0        54.3   57.8           57.8             57.7        58.1        63.5      59.1      63.5       58.0       62.1
+ bge-v2-m3 missing-heavy rho=0.5       55.0        60.5   70.5           71.0             67.0        58.1        63.5      71.3      74.6       72.2       73.7
+ bge-v2-m3  random-heavy rho=0.5       55.0        59.2   68.3           68.8             65.1        58.1        63.5      69.5      72.4       69.4       71.1
+
+   reranker          family  average  worst  average_ci    worst_ci gated_minus_this_average gated_minus_this_worst
+qwen3-0.6B       date_free     51.2   51.2 [48.3,54.1] [48.3,54.1]       +12.3 [+9.4,+15.2]    -31.3 [-34.5,-28.1]
+qwen3-0.6B           decay     56.8    0.9 [55.9,57.7]   [0.4,1.5]         +6.7 [+5.5,+7.9]    +19.0 [+16.7,+21.3]
+qwen3-0.6B   metadata_only     57.1    0.7 [56.2,58.0]   [0.2,1.2]         +6.4 [+5.3,+7.6]    +19.2 [+17.1,+21.5]
+qwen3-0.6B metadata_thresh     55.6   10.5 [54.3,56.9]  [8.8,12.1]         +8.0 [+6.4,+9.4]      +9.4 [+6.9,+12.1]
+qwen3-0.6B      content_zs     57.8   57.7 [55.0,60.6] [55.0,60.6]         +5.8 [+3.1,+8.4]    -37.8 [-40.8,-34.9]
+qwen3-0.6B      content_ft     63.5   63.5 [60.7,66.1] [60.7,66.1]         +0.0 [-2.2,+2.3]    -43.6 [-46.4,-40.8]
+qwen3-0.6B        gated_zs     58.4    5.2 [57.3,59.4]   [4.1,6.6]         +5.2 [+4.0,+6.4]    +14.7 [+12.6,+16.9]
+qwen3-0.6B        gated_ft     63.5   19.9 [62.1,64.9] [17.6,22.2]                      NaN                    NaN
+qwen3-0.6B       nogate_zs     57.6    0.8 [56.7,58.5]   [0.3,1.4]         +5.9 [+4.8,+7.0]    +19.1 [+16.8,+21.3]
+qwen3-0.6B       nogate_ft     61.4   15.2 [60.1,62.6] [13.2,17.3]         +2.2 [+1.7,+2.6]       +4.7 [+3.5,+5.8]
+ bge-v2-m3       date_free     55.0   55.0 [52.3,57.8] [52.3,57.8]        +8.2 [+5.5,+10.8]    -36.4 [-39.3,-33.5]
+ bge-v2-m3           decay     57.4    4.0 [56.3,58.5]   [2.9,5.2]         +5.8 [+4.8,+6.8]    +14.6 [+12.5,+16.8]
+ bge-v2-m3   metadata_only     57.5    2.1 [56.5,58.5]   [1.3,2.9]         +5.8 [+4.9,+6.7]    +16.5 [+14.5,+18.7]
+ bge-v2-m3 metadata_thresh     57.1   17.7 [55.7,58.6] [15.6,19.9]         +6.1 [+4.8,+7.4]       +0.9 [-1.6,+3.6]
+ bge-v2-m3      content_zs     58.1   58.1 [55.3,60.8] [55.3,60.8]         +5.2 [+2.6,+7.6]    -39.5 [-42.5,-36.7]
+ bge-v2-m3      content_ft     63.5   63.5 [60.7,66.2] [60.7,66.2]         -0.3 [-2.5,+2.0]    -44.9 [-47.7,-42.1]
+ bge-v2-m3        gated_zs     58.8    6.4 [57.7,59.9]   [5.1,7.8]         +4.4 [+3.5,+5.4]    +12.2 [+10.2,+14.3]
+ bge-v2-m3        gated_ft     63.2   18.6 [61.9,64.6] [16.5,20.8]                      NaN                    NaN
+ bge-v2-m3       nogate_zs     57.8    1.6 [56.9,58.8]   [0.9,2.3]         +5.4 [+4.5,+6.3]    +17.0 [+15.0,+19.2]
+ bge-v2-m3       nogate_ft     61.9   16.8 [60.5,63.2] [14.7,18.9]         +1.4 [+0.8,+2.0]       +1.7 [+0.3,+3.2]
+held-out pairs: 2000
+                                                                      analysis                                                       bin    n  zs_acc  ft_acc  zs_ece_after_T  ft_ece_after_T
+                                                              overall accuracy                                                       all 2000   60.10   65.60             NaN             NaN
+                                                                   calibration ECE (10 bins) on held-out half; after temperature T=11.40 1000   21.02     NaN            5.61             NaN
+                                                                   calibration  ECE (10 bins) on held-out half; after temperature T=1.13 1000     NaN    3.58             NaN            4.08
+                                                                  trivial rule                                       fewer words = newer 2000   48.20     NaN             NaN             NaN
+                                                                  trivial rule                                  fewer characters = newer 2000   47.20     NaN             NaN             NaN
+                                                                  trivial rule                                      fewer digits = newer 2000   49.20     NaN             NaN             NaN
+                                                    relative length difference                                               [0.00,0.05) 1416   61.40   66.70             NaN             NaN
+                                                    relative length difference                                               [0.05,0.15)  314   56.70   58.60             NaN             NaN
+                                                    relative length difference                                               [0.15,0.30)  169   58.00   68.00             NaN             NaN
+                                                    relative length difference                                               [0.30,0.60)   92   56.50   70.70             NaN             NaN
+                                                    relative length difference                                               [0.60,2.00)    9   55.60   55.60             NaN             NaN
+                                              number of word-level edit blocks                                                         1 1152   55.00   60.10             NaN             NaN
+                                              number of word-level edit blocks                                                         2  564   65.10   72.50             NaN             NaN
+                                              number of word-level edit blocks                                                       3-4  247   71.30   74.50             NaN             NaN
+                                              number of word-level edit blocks                                                       5-8   37   67.60   75.70             NaN             NaN
+                                      position of first change (share of text)                                               [0.00,0.25)  583   65.70   70.50             NaN             NaN
+                                      position of first change (share of text)                                               [0.25,0.50)  474   62.90   68.80             NaN             NaN
+                                      position of first change (share of text)                                               [0.50,0.75)  484   54.50   62.60             NaN             NaN
+                                      position of first change (share of text)                                               [0.75,1.01)  459   56.00   59.50             NaN             NaN
+                                                 changed words contain a digit                                                        no  786   49.70   51.40             NaN             NaN
+                                                 changed words contain a digit                                                       yes 1214   66.80   74.90             NaN             NaN
+                                                  changed words contain a year                                                        no 1532   56.90   62.50             NaN             NaN
+                                                  changed words contain a year                                                       yes  468   70.50   76.10             NaN             NaN
+surface-feature classifier (length, words, digits, years, capitals; 5-fold CV)                                                       all 2000   51.20     NaN             NaN             NaN
+[stage judge_diagnostics: 833s]
+DONE. Files: ['exp4_average_ci_j3B_s0.csv', 'exp4_calibration_bins_j3B_s0.csv', 'exp4_judge_accuracy_j3B_s0.csv', 'exp4_judge_diagnostics_j3B_s0.csv', 'exp4_mild_j3B_s0.csv', 'exp4_mixsens_j3B_s0.csv', 'exp4_real_j3B_s0.csv', 'exp4_runtime_j3B_s0.csv', 'exp4_table1_j3B_s0.csv', 'exp4_table2_j3B_s0.csv', 'perq_j3B_s0.npz', 'SUMMARY_j3B_s0.txt']
+Runtime per stage (s): {'rerank_scoring': 4099.0, 'judge_training': 1793.1, 'judge_pairs_K3': 3331.5, 'grid_search': 136.0, 'judge_diagnostics': 833.4}

@@ -1,0 +1,9 @@
+# Versions are not pinned: the runs used the Kaggle image (T4 GPU) with these installed by pip at start-up.
+transformers>=4.51.0
+datasets
+accelerate
+peft
+scikit-learn
+torch
+numpy
+pandas
